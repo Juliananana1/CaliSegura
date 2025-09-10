@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cali Segura</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f9fdfb;
+      color: #000000;
+    }
+    header {
+      background: linear-gradient(135deg, #1abc9c, #16a085);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1c/Panor%C3%A1mica_de_Santiago_de_Cali.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(22, 160, 133, 0.7);
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.4em;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #16a085;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .consejos, .tipos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card img {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+    #map {
+      height: 500px;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    footer {
+      text-align: center;
+      background: #16a085;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .noticia {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Inicio -->
+  <header>
+    <h1>🌿 Cali Segura</h1>
+    <p>TU CONFIANZA  PROTECCION SON NUESTRA MISIÓN</p>
+  </header>
+
+  <!-- Quiénes somos -->
+  <section>
+    <h2>Quiénes Somos</h2>
+    <p>
+      En <b>Cali Segura</b> trabajamos para promover la seguridad ciudadana y digital de todos los habitantes de la ciudad.  
+      Nuestra <b>misión</b> es brindar información clara, práctica y accesible para prevenir riesgos.  
+      Nuestra <b>visión</b> es una Cali en la que cada persona viva con tranquilidad, confianza y apoyo en comunidad.  
+    </p>
+    <p><i>La seguridad es importante porque nos da estabilidad, bienestar y protege nuestras vidas, nuestros datos y nuestro entorno.</i></p>
+  </section>
+
+  <!-- Tipos de seguridad -->
+  <section>
+    <h2>Tipos de Seguridad</h2>
+    <div class="tipos">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/841/841364.png" alt="Seguridad informática">
+        <h3>Seguridad Informática</h3>
+        <p>La seguridad informática se centra en proteger la información digital y los sistemas tecnológicos frente a amenazas como virus, ciberataques o fraudes en línea. Hoy en día, nuestros datos personales, financieros y profesionales circulan constantemente en la red, lo que nos hace vulnerables si no tomamos precauciones. Entre las buenas prácticas más recomendadas están el uso de contraseñas seguras y únicas, la activación de la verificación en dos pasos, la instalación de programas antivirus actualizados y el hábito de no abrir enlaces o archivos sospechosos..</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1048/1048949.png" alt="Seguridad ciudadana">
+        <h3>Seguridad Física y Ciudadana</h3>
+        <p>La seguridad ciudadana se refiere a las acciones y políticas destinadas a proteger a las personas en los espacios públicos y privados dentro de una comunidad. Incluye estrategias para reducir la delincuencia, promover la convivencia pacífica y fortalecer el vínculo entre ciudadanos y autoridades. Algunas recomendaciones prácticas para mejorar la seguridad ciudadana son: evitar transitar por lugares solitarios a altas horas de la noche, compartir la ubicación con familiares o amigos cuando se esté en un trayecto de riesgo, y mantener contacto con las líneas de emergencia de la ciudad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consejos -->
+  <section>
+    <h2>Consejos y Guías Prácticas</h2>
+    <div class="consejos">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Celular">
+        <p>Evita caminar solo por zonas oscuras o poco transitadas, especialmente de noche
+Informa a tus familiares dónde estás cuando vayas a lugares poco conocidos.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1048/1048949.png" alt="Hogar">
+        <p>Confía en tu intuición: si algo no se siente seguro, es mejor retirarse.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3097/3097144.png" alt="Transporte">
+        <p>No muestres objetos de valor (celulares, relojes, joyas) en lugares inseguros.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recursos -->
+  <section>
+    <h2>Recursos</h2>
+    <p style="text-align:center;">Video explicativo sobre cómo cuidarnos mejor:</p>
+    <div style="text-align:center;">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/1Lj5hcQY-Sw?si=dJc69ZbCBD-whkhK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" 
+        title="Video de seguridad" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Noticias -->
+  <section>
+    <h2>Noticias y Alertas</h2>
+    <div class="noticia">
+      <h3>🚨 Alerta en Cali</h3>
+      <p> Durante el 2025, Cali ha enfrentado una serie de atentados y hallazgos de explosivos que han encendido las alarmas de seguridad en la ciudad. Uno de los casos más graves se registró en los barrios Meléndez y Manuela Beltrán, donde artefactos detonaron cerca de estaciones de policía, dejando heridos y víctimas mortales.
+</li>
+En el sector de Junín, en el oriente de la ciudad, las autoridades detectaron un posible explosivo junto a un CAI, el cual fue neutralizado mediante detonación controlada en horas de la madrugada. Estos hechos hacen parte de una ola violenta atribuida a grupos armados ilegales que han buscado generar temor en la capital del Valle del Cauca.</p>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section>
+    <h2>Contacto y Ayuda</h2>
+    <p>Si necesitas ayuda, comunícate con las lineas de emergencia:</p>
+    <ul>
+      <li>📞 Emergencias: 123</li>
+      
+      <li>🚔 Policía Nacional: 112</li>
+     
+      <li>🔥 Bomberos: 119</li>
+      
+      <li>🏥 Cruz Roja: 132</li>
+    </ul>
+    <p>💬 Haz clic en el chat abajo a la derecha para hablar con un asesor.</p>
+  </section>
+
+  <!-- Mapa -->
+  <section>
+    <h2>Mapa Interactivo de Seguridad en Cali</h2>
+    <div id="map"></div>
+  </section>
+
+  <!-- Pie -->
+  <footer>
+    <p>💚 Cali Segura - Unidos por la protección y confianza</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([3.4516, -76.5320], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    var alertaIcon = L.icon({
+      iconUrl: 'https://cdn-icons-png.flaticon.com/512/565/565547.png',
+      iconSize: [30, 30]
+    });
+
+    // Zonas seguras
+    L.marker([3.4519, -76.5321]).addTo(map)
+      .bindPopup("<b>Granada</b><br>Zona con buena presencia policial.");
+    L.marker([3.3976, -76.5451]).addTo(map)
+      .bindPopup("<b>Ciudad Jardín</b><br>Considerada más segura.");
+    L.marker([3.4423, -76.5466]).addTo(map)
+      .bindPopup("<b>San Antonio</b><br>Área turística con vigilancia.");
+
+    // Zonas con inconvenientes
+    L.marker([3.4747, -76.4940], {icon: alertaIcon}).addTo(map)
+      .bindPopup("<b>Aguablanca</b><br>Precaución en la noche.");
+    L.marker([3.4555, -76.5083], {icon: alertaIcon}).addTo(map)
+      .bindPopup("<b>Centro de Cali</b><br>Alerta por robos callejeros.");
+  </script>
+
+  <!-- Chat Tawk.to -->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/1hruu1234'; 
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68c0d97d0e49f131d3b57ae8/1j4ol3509';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script--></body>
+</html>
